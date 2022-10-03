@@ -6,7 +6,7 @@ function reverse(str) {
 }
 
 // reverse('awesome') // 'emosewa'))
-console.log(reverse("awesome"));
+// console.log(reverse("awesome"));
 // e + reverse("awesom");
 // m + reverse("aweso");
 // o + reverse("awes");
@@ -53,13 +53,35 @@ const isOdd = (val) => {
 };
 
 const someRecursive = (arr, func) => {
-  if (arr.length === 0) return;
-  // if (func(arr[0])) return true;
-  someRecursive(arr.slice(1), func);
-  return func(arr[0]);
+  if (arr.length === 0) return false;
+
+  return func(arr[0]) ? true : false || someRecursive(arr.slice(1), func);
 };
 
-console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
-console.log(someRecursive([4, 9], isOdd)); // true
-console.log(someRecursive([4, 6, 8], isOdd)); // false
-console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
+// console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
+// console.log(someRecursive([4, 9], isOdd)); // true
+// console.log(someRecursive([4, 6, 8], isOdd)); // false
+// console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
+
+// ****************************************************************************
+
+// Write a recursive function called flatten which accepts an array of arrays and returns a new array with all values flattened.
+
+function flatten(arr) {
+  // add whatever parameters you deem necessary - good luck!
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[0] === "object") {
+      flatten(arr[0]);
+    } else {
+      newArr.push(arr[0]);
+    }
+  }
+
+  return newArr;
+}
+
+console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+// console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]?""
+// console.log(flatten([[1], [2], [3]])); // [1,2,3]
+// console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3

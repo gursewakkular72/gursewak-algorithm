@@ -141,7 +141,7 @@ const findLongestSubstring = (str) => {
       if (tempStr.length > len) {
         len = tempStr.length;
       }
-
+       // before reading the code below think: 'dvdf'. In the string 'dvdf' we need to go back to char 'v' after detecting the second occurance of 'd'.
       // get the index of the char that has repeated itself
       tempStrIndex = tempStr.indexOf(str[right]);
       // trim the tempStr a char after the repeated character.
